@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Gestor de Tareas</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="brand">TaskFlow</a>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#tareas" class="button button-secondary">Comenzar</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero section reveal">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Tu flujo de trabajo más sencillo</span>
+          <h1>Organiza tus tareas de forma simple y rápida</h1>
+          <p>TaskFlow te ayuda a gestionar actividades académicas y personales con una interfaz limpia, rápida y accesible desde cualquier dispositivo.</p>
+          <div class="hero-actions">
+            <a href="#tareas" class="button button-primary">Crear mi primera tarea</a>
+            <a href="#caracteristicas" class="button button-ghost">Ver características</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="visual-header">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="visual-content">
+              <div class="task-line">
+                <div class="task-dot"></div>
+                <p>Organizar proyecto final</p>
+              </div>
+              <div class="task-line completed">
+                <div class="task-dot"></div>
+                <p>Tarea de matemáticas</p>
+              </div>
+              <div class="task-line">
+                <div class="task-dot"></div>
+                <p>Revisar lecturas</p>
+              </div>
+            </div>
+          </div>
+          <div class="visual-badge">Productividad</div>
+          <div class="visual-blob"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="caracteristicas" class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Características</p>
+          <h2>Todo lo que necesitas para avanzar en tus tareas</h2>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M7 12h10M7 17h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="5.5" cy="12" r="1.5" fill="currentColor"/><circle cx="5.5" cy="17" r="1.5" fill="currentColor"/></svg>
+            </div>
+            <h3>Crear tareas fácilmente</h3>
+            <p>Agrega ideas, deberes y recordatorios en segundos con un solo formulario.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Marcar completadas</h3>
+            <p>Visualiza tu progreso al instante al marcar tareas resueltas.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="4" rx="1.5"/><rect x="4" y="14" width="10" height="4" rx="1.5"/></svg>
+            </div>
+            <h3>Filtrar pendientes</h3>
+            <p>Encuentra tareas abiertas y prioriza lo más importante rápidamente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios" class="section section-alt reveal">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Beneficios</p>
+          <h2>Más claridad, más eficiencia</h2>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit-card">
+            <h3>Organización académica</h3>
+            <p>Gestiona entregas, exámenes y tareas en un solo lugar.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Mejor productividad</h3>
+            <p>Controla tu avance y elimina la sensación de desorden.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Interfaz sencilla</h3>
+            <p>Usa una herramienta clara, intuitiva y sin distracciones.</p>
+          </div>
+          <div class="benefit-card">
+            <h3>Acceso rápido</h3>
+            <p>Desde tu laptop, tablet o teléfono, tu lista siempre está disponible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tareas" class="section reveal task-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Interactiva</p>
+          <h2>Agrega tareas sin recargar la página</h2>
+          <p class="section-copy">Prueba el gestor en vivo. Añade tareas y elimínalas con un clic.</p>
+        </div>
+
+        <div class="task-panel">
+          <form id="task-form" class="task-form">
+            <label for="task-input">Nueva tarea</label>
+            <div class="task-form-row">
+              <input id="task-input" type="text" placeholder="Escribe tu próxima tarea" required maxlength="80" />
+              <button type="submit" class="button button-primary">Agregar</button>
+            </div>
+          </form>
+
+          <div class="task-list-card">
+            <div class="task-list-header">
+              <h3>Lista de tareas</h3>
+              <span id="task-count">0 tareas</span>
+            </div>
+            <ul id="task-list" class="task-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto" class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand">TaskFlow</a>
+        <p>El gestor minimalista para tus tareas académicas y personales.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#caracteristicas">Características</a>
+        <a href="#tareas">Tareas</a>
+      </div>
+      <div>
+        <p class="footer-label">Síguenos</p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="Twitter">Twitter</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 TaskFlow. Diseñado para estudiantes y profesionales.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
