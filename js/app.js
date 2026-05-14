@@ -10,6 +10,63 @@ const statusFilter = document.getElementById('status-filter');
 let tasks = [];
 let currentFilter = 'all';
 
+// Carga tareas desde localStorage
+function loadTasks() {
+  const storedTasks = JSON.parse(localStorage.getItem('taskflowTasks') || '[]');
+  tasks = storedTasks.map(task => ({
+    id: task.id,
+    title: task.title,
+    description: task.description,
+    category: task.category || 'Académica', // Default category if not set
+    status: task.completed ? 'done' : 'pending',
+    dueDate: task.dueDate,
+    priority: task.priority,
+    createdAt: task.createdAt,
+    completedAt: task.completedAt
+  }));
+}
+
+// Carga categorías desde localStorage
+function loadCategories() {
+  const storedCategories = JSON.parse(localStorage.getItem('taskflowCategories') || '[]');
+  if (taskCategory) {
+    taskCategory.innerHTML = '';
+    if (storedCategories.length > 0) {
+      storedCategories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat.name;
+        option.textContent = cat.name;
+        taskCategory.appendChild(option);
+      });
+    } else {
+      // Categorías por defecto
+      const defaultCategories = ['Académica', 'Personal', 'Trabajo', 'Salud'];
+      defaultCategories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        taskCategory.appendChild(option);
+      });
+    }
+  }
+}
+
+// Guarda tareas en localStorage
+function saveTasks() {
+  const storedTasks = tasks.map(task => ({
+    id: task.id,
+    title: task.title,
+    description: task.description,
+    category: task.category,
+    dueDate: task.dueDate,
+    priority: task.priority,
+    createdAt: task.createdAt,
+    completed: task.status === 'done',
+    completedAt: task.status === 'done' ? task.completedAt || new Date().toISOString() : undefined
+  }));
+  localStorage.setItem('taskflowTasks', JSON.stringify(storedTasks));
+}
+
 // Devuelve las tareas visibles según el filtro seleccionado.
 function getFilteredTasks() {
   if (currentFilter === 'all') return tasks;
@@ -27,7 +84,9 @@ function renderTasks() {
     taskList.innerHTML = '<li class="task-item empty-state">No hay tareas en este estado. Añade una tarea nueva o cambia el filtro.</li>';
   }
 
-  visibleTasks.forEach((task, index) => {
+  visibleTasks.forEach((task, visibleIndex) => {
+    // Find the original index in tasks array
+    const originalIndex = tasks.findIndex(t => t.id === task.id);
     const item = document.createElement('li');
     item.className = `task-item ${task.status === 'done' ? 'completed' : ''}`;
     item.innerHTML = `
@@ -42,10 +101,10 @@ function renderTasks() {
         </div>
       </div>
       <div class="task-item-actions">
-        <button type="button" class="button button-secondary" data-action="toggle" data-index="${index}">
+        <button type="button" class="button button-secondary" data-action="toggle" data-index="${originalIndex}">
           ${task.status === 'done' ? 'Reabrir' : 'Marcar hecha'}
         </button>
-        <button type="button" class="button button-ghost" data-action="delete" data-index="${index}">Eliminar</button>
+        <button type="button" class="button button-ghost" data-action="delete" data-index="${originalIndex}">Eliminar</button>
       </div>
     `;
 
@@ -73,15 +132,20 @@ function addTask(event) {
   if (!title) return;
 
   tasks.push({
+    id: Date.now().toString(),
     title,
     description,
     category,
     status: 'pending',
+    dueDate: '',
+    priority: 'media', // Default priority
+    createdAt: new Date().toISOString()
   });
 
   taskTitle.value = '';
   if (taskDesc) taskDesc.value = '';
   taskCategory.value = 'Académica';
+  saveTasks();
   renderTasks();
 }
 
@@ -89,6 +153,12 @@ function addTask(event) {
 function toggleTaskStatus(index) {
   if (!Number.isInteger(index) || index < 0 || index >= tasks.length) return;
   tasks[index].status = tasks[index].status === 'done' ? 'pending' : 'done';
+  if (tasks[index].status === 'done') {
+    tasks[index].completedAt = new Date().toISOString();
+  } else {
+    delete tasks[index].completedAt;
+  }
+  saveTasks();
   renderTasks();
 }
 
@@ -103,6 +173,7 @@ function handleTaskListClick(event) {
 
   if (action === 'delete') {
     tasks.splice(index, 1);
+    saveTasks();
     renderTasks();
     return;
   }
@@ -145,6 +216,8 @@ if (statusFilter) {
 
 window.addEventListener('scroll', handleScrollReveal);
 window.addEventListener('load', () => {
+  loadTasks();
+  loadCategories();
   if (statusFilter) {
     statusFilter.value = currentFilter;
   }
