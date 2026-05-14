@@ -40,8 +40,12 @@ function handleLogin(event) {
     return;
   }
 
+  localStorage.setItem('taskflowCurrentUser', emailValue);
   showMessage(`Bienvenido de nuevo, ${user.name}.`, 'success');
   loginForm.reset();
+  setTimeout(() => {
+    window.location.href = 'create-task.html';
+  }, 800);
 }
 
 function revealOnLoad() {

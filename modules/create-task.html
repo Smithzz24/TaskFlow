@@ -11,13 +11,14 @@
     <div class="container nav-inner">
       <a href="../index.html" class="brand">TaskFlow</a>
       <nav class="nav-links">
-        <a href="../index.html#inicio">Inicio</a>
-        <a href="../index.html#caracteristicas">Características</a>
-        <a href="../index.html#tareas">Tareas</a>
-        <a href="user-registration.html">Registro</a>
-        <a href="user-login.html">Inicio de sesión</a>
+        <a href="../index.html#inicio" class="js-guest-only">Inicio</a>
+        <a href="../index.html#caracteristicas" class="js-guest-only">Características</a>
+        <a href="../index.html#tareas" class="js-guest-only">Tareas</a>
+        <a href="create-task.html" class="js-auth-only" style="display:none;">Crear tarea</a>
+        <a href="list-tasks.html" class="js-auth-only" style="display:none;">Lista</a>
+        <a href="delete-task.html" class="js-auth-only" style="display:none;">Eliminar</a>
       </nav>
-      <a href="../index.html" class="button button-secondary">Volver</a>
+      <a href="../index.html" class="button button-secondary js-logout-button" style="display:none;">Cerrar sesión</a>
     </div>
   </header>
 
@@ -54,6 +55,15 @@
                     <option value="baja">Baja</option>
                   </select>
                 </div>
+                <div class="form-field">
+                  <label for="task-category">Categoría</label>
+                  <select id="task-category" name="category">
+                    <option value="Académica">Académica</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Trabajo">Trabajo</option>
+                    <option value="Salud">Salud</option>
+                  </select>
+                </div>
               </div>
               <p id="create-task-message" class="form-message" aria-live="polite"></p>
               <div class="form-actions">
@@ -67,5 +77,6 @@
   </main>
 
   <script src="../js/create-task.js"></script>
+  <script src="../js/auth-nav.js"></script>
 </body>
 </html>

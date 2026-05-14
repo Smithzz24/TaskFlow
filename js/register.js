@@ -53,7 +53,10 @@ function handleRegistration(event) {
   });
 
   registerForm.reset();
-  showMessage('Cuenta creada con éxito. Ya puedes volver a la página principal.', 'success');
+  showMessage('Cuenta creada con éxito. Redirigiendo al inicio de sesión...', 'success');
+  setTimeout(() => {
+    window.location.href = 'user-login.html';
+  }, 1100);
 }
 
 function revealOnLoad() {

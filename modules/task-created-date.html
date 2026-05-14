@@ -11,13 +11,16 @@
     <div class="container nav-inner">
       <a href="../index.html" class="brand">TaskFlow</a>
       <nav class="nav-links">
-        <a href="../index.html#inicio">Inicio</a>
-        <a href="../index.html#caracteristicas">Características</a>
-        <a href="../index.html#tareas">Tareas</a>
-        <a href="user-registration.html">Registro</a>
-        <a href="user-login.html">Inicio de sesión</a>
+        <a href="../index.html#inicio" class="js-guest-only">Inicio</a>
+        <a href="../index.html#caracteristicas" class="js-guest-only">Características</a>
+        <a href="../index.html#tareas" class="js-guest-only">Tareas</a>
+        <a href="user-registration.html" class="js-guest-only">Registro</a>
+        <a href="user-login.html" class="js-guest-only">Inicio de sesión</a>
+        <a href="create-task.html" class="js-auth-only" style="display:none;">Crear tarea</a>
+        <a href="list-tasks.html" class="js-auth-only" style="display:none;">Lista</a>
+        <a href="delete-task.html" class="js-auth-only" style="display:none;">Eliminar</a>
       </nav>
-      <a href="../index.html" class="button button-secondary">Volver</a>
+      <a href="../index.html" class="button button-secondary js-logout-button" style="display:none;">Cerrar sesión</a>
     </div>
   </header>
 
@@ -54,5 +57,6 @@
 
   <script src="../js/app.js"></script>
   <script src="../js/task-created-date.js"></script>
+  <script src="../js/auth-nav.js"></script>
 </body>
 </html>

@@ -11,13 +11,14 @@
     <div class="container nav-inner">
       <a href="#inicio" class="brand">TaskFlow</a>
       <nav class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#caracteristicas">Características</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#contacto">Contacto</a>
-        <a href="modules/user-registration.html">Registro</a>
+        <a href="#inicio" class="js-guest-only">Inicio</a>
+        <a href="#caracteristicas" class="js-guest-only">Características</a>
+        <a href="#beneficios" class="js-guest-only">Beneficios</a>
+        <a href="#contacto" class="js-guest-only">Contacto</a>
+        <a href="modules/user-registration.html" class="js-guest-only">Registro</a>
       </nav>
-      <a href="#tareas" class="button button-secondary">Comenzar</a>
+      <a href="modules/user-login.html" class="button button-secondary js-guest-cta">Comenzar</a>
+      <a href="modules/create-task.html" class="button button-primary js-auth-cta" style="display:none;">Ir a tareas</a>
     </div>
   </header>
 
@@ -195,5 +196,6 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/auth-nav.js"></script>
 </body>
 </html>
