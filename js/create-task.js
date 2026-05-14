@@ -29,6 +29,7 @@ function handleCreateTask(event) {
   }
 
   const task = {
+    id: Date.now().toString(),
     title: titleInput.value.trim(),
     description: descInput.value.trim(),
     dueDate: dateInput.value,
