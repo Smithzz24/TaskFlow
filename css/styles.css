@@ -395,10 +395,38 @@ img {
   color: var(--surface-strong);
 }
 
-.form-field input:focus {
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
   outline: none;
   border-color: rgba(124, 92, 255, 0.45);
   box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.1);
+}
+
+.form-field textarea {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  font-size: 1rem;
+  color: var(--surface-strong);
+  resize: vertical;
+}
+
+.form-field select {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  font-size: 1rem;
+  color: var(--surface-strong);
+  background: #fff;
+}
+
+.task-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
 }
 
 .form-actions {
