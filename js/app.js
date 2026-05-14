@@ -67,6 +67,17 @@ function saveTasks() {
   localStorage.setItem('taskflowTasks', JSON.stringify(storedTasks));
 }
 
+// Escapa texto para uso seguro en HTML.
+function escapeHTML(value) {
+  if (typeof value !== 'string') return '';
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // Devuelve las tareas visibles según el filtro seleccionado.
 function getFilteredTasks() {
   if (currentFilter === 'all') return tasks;
@@ -89,22 +100,29 @@ function renderTasks() {
     const originalIndex = tasks.findIndex(t => t.id === task.id);
     const item = document.createElement('li');
     item.className = `task-item ${task.status === 'done' ? 'completed' : ''}`;
+    const safeTitle = escapeHTML(task.title);
+    const safeDescription = escapeHTML(task.description || 'Sin descripción adicional');
+    const safeCategory = escapeHTML(task.category);
+    const labelToggle = task.status === 'done'
+      ? `Reabrir tarea ${safeTitle}`
+      : `Marcar tarea ${safeTitle} como hecha`;
+
     item.innerHTML = `
       <div class="task-item-main">
         <div class="task-item-head">
           <span class="task-status-badge ${task.status}">${task.status === 'done' ? 'Hecha' : 'En espera'}</span>
-          <span class="task-category-badge">${task.category}</span>
+          <span class="task-category-badge">${safeCategory}</span>
         </div>
         <div class="task-item-copy">
-          <h4>${task.title}</h4>
-          <p>${task.description || 'Sin descripción adicional'}</p>
+          <h4>${safeTitle}</h4>
+          <p>${safeDescription}</p>
         </div>
       </div>
       <div class="task-item-actions">
-        <button type="button" class="button button-secondary" data-action="toggle" data-index="${originalIndex}">
+        <button type="button" class="button button-secondary" data-action="toggle" data-index="${originalIndex}" aria-label="${labelToggle}">
           ${task.status === 'done' ? 'Reabrir' : 'Marcar hecha'}
         </button>
-        <button type="button" class="button button-ghost" data-action="delete" data-index="${originalIndex}">Eliminar</button>
+        <button type="button" class="button button-ghost" data-action="delete" data-index="${originalIndex}" aria-label="Eliminar tarea ${safeTitle}">Eliminar</button>
       </div>
     `;
 

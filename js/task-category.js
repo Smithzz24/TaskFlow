@@ -19,7 +19,7 @@ function loadCategories() {
     categoryItem.className = 'category-item';
     categoryItem.innerHTML = `
       <span class="category-name" style="color: ${category.color}">${category.name}</span>
-      <button class="delete-category" data-id="${category.id}">Eliminar</button>
+      <button class="delete-category" data-id="${category.id}" aria-label="Eliminar categoría ${category.name}">Eliminar</button>
     `;
     categoriesList.appendChild(categoryItem);
   });
