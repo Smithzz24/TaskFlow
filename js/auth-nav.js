@@ -20,6 +20,7 @@ function handleAuthNav() {
   const guestButtons = document.querySelectorAll('.js-guest-cta');
   const logoutButton = document.querySelector('.js-logout-button');
 
+  
   guestLinks.forEach((item) => {
     item.style.display = currentUser ? 'none' : '';
   });
@@ -54,3 +55,4 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutButton.addEventListener('click', handleLogout);
   }
 });
+//Arreglo de inconsistencias//
