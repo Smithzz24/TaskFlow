@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Eliminar tarea</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">TaskFlow</a>
+      <nav class="nav-links">
+        <a href="../index.html#inicio">Inicio</a>
+        <a href="../index.html#caracteristicas">Características</a>
+        <a href="../index.html#tareas">Tareas</a>
+        <a href="create-task.html">Crear tarea</a>
+        <a href="user-login.html">Inicio de sesión</a>
+      </nav>
+      <a href="../index.html" class="button button-secondary">Volver</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Eliminar tarea</p>
+          <h2>Elimina tareas completadas o que ya no necesitas</h2>
+          <p class="section-copy">Selecciona una tarea de la lista y bórrala con un solo clic para mantener tu planner limpio.</p>
+        </div>
+
+        <div class="task-panel">
+          <div class="auth-card">
+            <form id="delete-task-form" class="task-form" novalidate>
+              <div class="form-field">
+                <label for="delete-task-select">Selecciona una tarea</label>
+                <select id="delete-task-select" name="task" required>
+                  <option value="">Elige una tarea...</option>
+                </select>
+              </div>
+              <p id="delete-task-message" class="form-message" aria-live="polite"></p>
+              <div class="form-actions">
+                <button type="submit" class="button button-primary">Eliminar tarea</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="task-list-card">
+            <div class="task-list-header">
+              <h3>Tareas guardadas</h3>
+              <span id="delete-task-count">0 tareas</span>
+            </div>
+            <ul id="delete-task-list" class="task-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/delete-task.js"></script>
+</body>
+</html>
