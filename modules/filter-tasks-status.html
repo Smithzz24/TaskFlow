@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow | Filtro de tareas</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">TaskFlow</a>
+      <nav class="nav-links">
+        <a href="../index.html#inicio">Inicio</a>
+        <a href="../index.html#caracteristicas">Características</a>
+        <a href="../index.html#tareas">Tareas</a>
+        <a href="user-registration.html">Registro</a>
+        <a href="user-login.html">Inicio de sesión</a>
+      </nav>
+      <a href="../index.html" class="button button-secondary">Volver</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Filtrar tareas</p>
+          <h2>Visualiza solo tareas pendientes o ya hechas</h2>
+          <p class="section-copy">Controla tu lista con un filtro por estado para enfocarte en lo importante.</p>
+        </div>
+
+        <div class="task-panel">
+          <form id="task-form" class="task-form">
+            <label for="task-input">Nueva tarea</label>
+            <div class="task-form-row">
+              <input id="task-input" type="text" placeholder="Escribe tu próxima tarea" required maxlength="80" />
+              <button type="submit" class="button button-primary">Agregar</button>
+            </div>
+          </form>
+
+          <div class="task-list-card">
+            <div class="task-list-header">
+              <h3>Lista de tareas</h3>
+              <span id="task-count">0 tareas</span>
+            </div>
+            <div class="task-list-toolbar">
+              <label for="status-filter">Filtrar por estado</label>
+              <select id="status-filter">
+                <option value="all">Todas</option>
+                <option value="pending">Pendientes</option>
+                <option value="done">Hechas</option>
+              </select>
+            </div>
+            <ul id="task-list" class="task-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
