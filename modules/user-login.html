@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TaskFlow | Registro de usuario</title>
+  <title>TaskFlow | Iniciar sesión</title>
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -13,7 +13,8 @@
       <nav class="nav-links">
         <a href="../index.html#inicio">Inicio</a>
         <a href="../index.html#caracteristicas">Características</a>
-        <a href="../index.html#tareas">Tareas</a>
+        <a href="../index.html#beneficios">Beneficios</a>
+        <a href="user-registration.html">Registro</a>
       </nav>
       <a href="../index.html" class="button button-secondary">Volver</a>
     </div>
@@ -23,37 +24,30 @@
     <section class="section reveal">
       <div class="container">
         <div class="section-header">
-          <p class="eyebrow">Registro</p>
-          <h2>Crea tu cuenta y comienza a organizar tus tareas</h2>
-          <p class="section-copy">Regístrate de forma segura y accede a tu flujo de trabajo en pocos pasos.</p>
+          <p class="eyebrow">Inicio de sesión</p>
+          <h2>Ingresa a tu cuenta TaskFlow</h2>
+          <p class="section-copy">Accede para ver tus tareas y continuar tu flujo de trabajo sin interrupciones.</p>
         </div>
 
         <div class="task-panel">
           <div class="auth-card">
-            <form id="register-form" class="task-form" novalidate>
-              <div class="form-field">
-                <label for="name">Nombre completo</label>
-                <input id="name" name="name" type="text" placeholder="Tu nombre completo" required maxlength="60" />
-              </div>
+            <form id="login-form" class="task-form" novalidate>
               <div class="form-field">
                 <label for="email">Correo electrónico</label>
                 <input id="email" name="email" type="email" placeholder="ejemplo@correo.com" required />
               </div>
               <div class="form-field">
                 <label for="password">Contraseña</label>
-                <input id="password" name="password" type="password" placeholder="Mínimo 8 caracteres" required minlength="8" />
+                <input id="password" name="password" type="password" placeholder="Tu contraseña" required minlength="8" />
               </div>
-              <div class="form-field">
-                <label for="confirm-password">Confirmar contraseña</label>
-                <input id="confirm-password" name="confirmPassword" type="password" placeholder="Repite tu contraseña" required minlength="8" />
-              </div>
-              <p id="register-message" class="form-message" aria-live="polite"></p>
+              <p id="login-message" class="form-message" aria-live="polite"></p>
               <div class="form-actions">
-                <button type="submit" class="button button-primary">Crear cuenta</button>
+                <button type="submit" class="button button-primary">Iniciar sesión</button>
+                <a href="user-registration.html" class="button button-secondary">Crear cuenta</a>
               </div>
               <div class="auth-switch">
-                <p>¿Ya tienes cuenta?</p>
-                <a href="user-login.html">Inicia sesión</a>
+                <p>¿Aún no tienes cuenta?</p>
+                <a href="user-registration.html">Regístrate aquí</a>
               </div>
             </form>
           </div>
@@ -62,6 +56,6 @@
     </section>
   </main>
 
-  <script src="../js/register.js"></script>
+  <script src="../js/login.js"></script>
 </body>
 </html>
