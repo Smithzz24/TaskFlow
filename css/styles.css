@@ -538,6 +538,38 @@ img {
   background: rgba(124, 92, 255, 0.1);
 }
 
+.task-item-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.task-category-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.05);
+  color: var(--surface-strong);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.task-item-copy h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  color: var(--surface-strong);
+}
+
+.task-item-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .task-item.empty-state {
   justify-content: center;
   color: var(--muted);

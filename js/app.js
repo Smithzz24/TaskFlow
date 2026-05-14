@@ -1,6 +1,8 @@
 ﻿// Selección de elementos del DOM.
 const taskForm = document.getElementById('task-form');
-const taskInput = document.getElementById('task-input');
+const taskTitle = document.getElementById('task-title');
+const taskDesc = document.getElementById('task-desc');
+const taskCategory = document.getElementById('task-category');
 const taskList = document.getElementById('task-list');
 const taskCount = document.getElementById('task-count');
 const statusFilter = document.getElementById('status-filter');
@@ -16,6 +18,8 @@ function getFilteredTasks() {
 
 // Renderiza la lista de tareas en el DOM.
 function renderTasks() {
+  if (!taskList) return;
+
   const visibleTasks = getFilteredTasks();
   taskList.innerHTML = '';
 
@@ -23,20 +27,25 @@ function renderTasks() {
     taskList.innerHTML = '<li class="task-item empty-state">No hay tareas en este estado. Añade una tarea nueva o cambia el filtro.</li>';
   }
 
-  visibleTasks.forEach((task) => {
-    const actualIndex = tasks.indexOf(task);
+  visibleTasks.forEach((task, index) => {
     const item = document.createElement('li');
     item.className = `task-item ${task.status === 'done' ? 'completed' : ''}`;
     item.innerHTML = `
       <div class="task-item-main">
-        <span class="task-status-badge ${task.status}">${task.status === 'done' ? 'Hecha' : 'Pendiente'}</span>
-        <p>${task.text}</p>
+        <div class="task-item-head">
+          <span class="task-status-badge ${task.status}">${task.status === 'done' ? 'Hecha' : 'En espera'}</span>
+          <span class="task-category-badge">${task.category}</span>
+        </div>
+        <div class="task-item-copy">
+          <h4>${task.title}</h4>
+          <p>${task.description || 'Sin descripción adicional'}</p>
+        </div>
       </div>
       <div class="task-item-actions">
-        <button type="button" class="button button-secondary" data-action="toggle" data-index="${actualIndex}">
+        <button type="button" class="button button-secondary" data-action="toggle" data-index="${index}">
           ${task.status === 'done' ? 'Reabrir' : 'Marcar hecha'}
         </button>
-        <button type="button" class="button button-ghost" data-action="delete" data-index="${actualIndex}">Eliminar</button>
+        <button type="button" class="button button-ghost" data-action="delete" data-index="${index}">Eliminar</button>
       </div>
     `;
 
@@ -46,19 +55,33 @@ function renderTasks() {
   const visibleCount = visibleTasks.length;
   const totalCount = tasks.length;
   const countText = `${visibleCount} tarea${visibleCount === 1 ? '' : 's'}`;
-  taskCount.textContent = currentFilter === 'all' ? countText : `${countText} de ${totalCount}`;
+
+  if (taskCount) {
+    taskCount.textContent = currentFilter === 'all' ? countText : `${countText} de ${totalCount}`;
+  }
 }
 
 // Añade una nueva tarea y actualiza la vista.
 function addTask(event) {
   event.preventDefault();
-  if (!taskInput) return;
+  if (!taskTitle || !taskCategory) return;
 
-  const value = taskInput.value.trim();
-  if (!value) return;
+  const title = taskTitle.value.trim();
+  const description = taskDesc ? taskDesc.value.trim() : '';
+  const category = taskCategory.value;
 
-  tasks.push({ text: value, status: 'pending' });
-  taskInput.value = '';
+  if (!title) return;
+
+  tasks.push({
+    title,
+    description,
+    category,
+    status: 'pending',
+  });
+
+  taskTitle.value = '';
+  if (taskDesc) taskDesc.value = '';
+  taskCategory.value = 'Académica';
   renderTasks();
 }
 

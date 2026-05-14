@@ -129,11 +129,24 @@
 
         <div class="task-panel">
           <form id="task-form" class="task-form">
-            <label for="task-input">Nueva tarea</label>
-            <div class="task-form-row">
-              <input id="task-input" type="text" placeholder="Escribe tu próxima tarea" required maxlength="80" />
-              <button type="submit" class="button button-primary">Agregar</button>
+            <div class="form-field">
+              <label for="task-title">Título de la tarea</label>
+              <input id="task-title" type="text" placeholder="Ej. Preparar la presentación" required maxlength="80" />
             </div>
+            <div class="form-field">
+              <label for="task-desc">Información</label>
+              <textarea id="task-desc" placeholder="Describe brevemente la tarea" rows="3" maxlength="180"></textarea>
+            </div>
+            <div class="form-field">
+              <label for="task-category">Categoría</label>
+              <select id="task-category">
+                <option value="Académica">Académica</option>
+                <option value="Personal">Personal</option>
+                <option value="Trabajo">Trabajo</option>
+                <option value="Salud">Salud</option>
+              </select>
+            </div>
+            <button type="submit" class="button button-primary">Agregar</button>
           </form>
 
           <div class="task-list-card">
