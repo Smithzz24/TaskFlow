@@ -1,0 +1,29 @@
+{
+  "name": "taskflow",
+  "version": "1.0.0",
+  "description": "TaskFlow es una aplicación web enfocada en la gestión de tareas personales y productividad.  \r Permite crear, organizar y administrar tareas mediante una interfaz moderna, responsiva y amigable para el usuario.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Smithzz24/TaskFlow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Smithzz24/TaskFlow/issues"
+  },
+  "homepage": "https://github.com/Smithzz24/TaskFlow#readme",
+  "devDependencies": {
+    "vite": "^8.0.13"
+  }
+}
